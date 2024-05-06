@@ -34,6 +34,19 @@ async function getPhotoUrls(photos, user) {
   );
 }
 
+async function fetchFavoritePhotos(user) {
+  const { data, error } = await supabaseServer
+    .from("favorite")
+    .select("photo_name")
+    .eq("user_id", user.id);
+
+  if (error) {
+    console.error(`Error fetching favorites`, error);
+    return [];
+  }
+  return data.map((favorite) => favorite.photo_name);
+}
+
 export default async function PhotoGrid() {
   const {
     data: { user },
@@ -42,7 +55,6 @@ export default async function PhotoGrid() {
   console.log({ photos });
   const photoObjects = await getPhotoUrls(photos, user);
 
-  console.log({ photoObjects });
   return (
     <div className="flex flex-wrap justify-center gap-4">
       {photoObjects.map((photo) => (
