@@ -2,17 +2,10 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import PhotoModal from "./PhotoModal";
-import { Delete, Favorite, FavoriteBorder } from "@mui/icons-material";
+import { Delete } from "@mui/icons-material";
 import { deletePhoto } from "../actions/deletePhoto";
 
-export default function Photo({
-  url,
-  alt,
-  width,
-  height,
-  photoName,
-  isFavorite = false,
-}) {
+export default function Photo({ url, alt, width, height }) {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = () => {
@@ -37,8 +30,6 @@ export default function Photo({
             <Delete />
           </button>
         </form>
-
-      
 
         <Image
           src={url}

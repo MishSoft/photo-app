@@ -43,6 +43,6 @@ export async function deletePhoto(formData) {
   if (error) {
     return { success: false, error };
   }
-  revalidatePath('/photos')
+  revalidatePath("/photos");
   return { success: true };
 }
