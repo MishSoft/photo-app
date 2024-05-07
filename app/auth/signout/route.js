@@ -1,9 +1,8 @@
 import { createServerClient } from "@supabase/ssr";
-import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {
-  const cookieStore = cookies();
+  const cookieStore = req.cookies;
 
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL,
@@ -11,13 +10,13 @@ export async function POST(req) {
     {
       cookies: {
         get(name) {
-          return cookieStore.get(name)?.value;
+          return cookieStore.get(name);
         },
         set(name, value, options) {
-          cookieStore.set({ name, value, ...options });
+          req.cookies.set(name, value, options);
         },
         remove(name, options) {
-          cookieStore.set({ name, value: "", ...options });
+          req.cookies.set(name, "", { expires: new Date(0), ...options });
         },
       },
     }
