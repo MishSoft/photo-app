@@ -16,3 +16,5 @@ A simple web application for uploading and saving photos.
 - React
 - Supabase
 
+![Screenshot 2024-05-10 164815](https://github.com/MishSoft/photo-app/assets/120841642/c53a69e8-6fda-47de-8824-c37a3a2061db)
+![Screenshot 2024-05-10 164906](https://github.com/MishSoft/photo-app/assets/120841642/05d0b09d-558f-45f2-9697-52e1c05b0a31)
